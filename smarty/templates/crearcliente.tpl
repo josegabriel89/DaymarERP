@@ -1,6 +1,6 @@
 <div class='campo'>
     <label for='dni' >DNI:</label><br/>
-    <input type='text' name='dni' maxlength="50"  required/><br/>
+    <input type='text' name='dni' maxlength="50"/><br/>
 </div>
 <div class='campo'>
     <label for='nombre' >Nombre:</label><br/>

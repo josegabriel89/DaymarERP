@@ -33,11 +33,10 @@ $codigo= strtoupper("F".dechex($hora['year']).dechex($hora['yday']).dechex($hora
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('phpself', $_SERVER['PHP_SELF']);
-$smarty->assign('file', "crearcliente.tpl");
+$smarty->assign('file', "crearfactura.tpl");
 $smarty->assign('tipoelementos', "clientes");
 $smarty->assign('tipoelemento', "cliente");
 $smarty->assign('listaphp', "listaclientes.php");
-$smarty->assign('num', $_SESSION['numerotelefonos']);
 $smarty->assign('script', $script);
 
 // Mostramos la plantilla

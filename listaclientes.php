@@ -18,6 +18,14 @@ session_start();
 if (!isset($_SESSION['usuario']))
     die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 
+//borrar telefonos
+//boorar cliente
+
+if(isset($_POST['borrar'])){
+    DB::deletedatos('telefonos', 'dni_cliente', $_POST['oculto']);
+    DB::deletedatos('clientes', 'dni', $_POST['oculto']);
+}
+
 $indicee = array();
 $indicee = DB::getindice('clientes');
 $contenidoo = array();
@@ -50,7 +58,9 @@ for ($i = 0; $i < count($contenidoo); $i++) {
 }
 
 //Añadir el indice de telefonos a la tabla
+if(count($contenidoo)>0){
 $indicee[] = 'Telefono';
+}
 
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
@@ -60,6 +70,7 @@ $smarty->assign('indicee', $indicee);
 $smarty->assign('contenidoo', $contenidoo);
 $smarty->assign('script', $script);
 $smarty->assign('crearphp', 'crearcliente.php');
+$smarty->assign('paginaactual', 'listaclientes.php');
 
 // Mostramos la plantilla
 $smarty->display('listas.tpl');

@@ -3,19 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/login.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/include/DB.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/smarty/templates/crearfactura.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/include/DBmodelo.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/crearelemento.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/smarty/templates/crearcliente.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/smarty/templates/crear.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/smarty/templates/crearelemento.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/listaelementos.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/creargasto.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/smarty/templates/creargasto.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/smarty/templates/listas.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/Daymar/listagastos.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/smarty/templates/listas.tpl</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/crearelemento.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/include/DBmodelo.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/creargasto.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/smarty/templates/crear.tpl</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/crearcliente.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/login.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/listaelementos.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/home.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/listaclientes.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/include/DB.php</file>
+            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/smarty/templates/crearcliente.tpl</file>
         </group>
     </open-files>
 </project-private>

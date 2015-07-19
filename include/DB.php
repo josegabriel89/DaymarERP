@@ -140,6 +140,22 @@ class DB {
             }
         }
     }
+    
+    public static function adddatos($tabla, $columnas, $datos) {
+        $dwes = self::conectar();
+        if (isset($dwes)) {
+            $dwes->beginTransaction();
+            foreach ($datos as $datosfila) {
+                $sql = self::consulta($tabla, $columnas, $datosfila);
+                $cambios = $dwes->exec($sql);
+            }
+            if ($cambios != 0) {
+                $dwes->commit();
+            } else {
+                $dwes->rollback();
+            }
+        }
+    }
 
     protected static function consulta($tabla, $columnas, $datos) {
         $sql = "INSERT INTO " . $tabla;
