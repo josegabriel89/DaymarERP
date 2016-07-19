@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>smarty/templates/crearfactura.tpl</url>
+            <bookmark id="1">
+                <name/>
+                <line>7</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/smarty/templates/listas.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/crearelemento.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/include/DBmodelo.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/creargasto.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/smarty/templates/crear.tpl</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/crearcliente.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/login.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/listaelementos.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/home.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/listaclientes.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/include/DB.php</file>
-            <file>file:/F:/Apuntes/Dropbox/Proyectos/daymar/smarty/templates/crearcliente.tpl</file>
+            <file>file:/D:/Drive/DaymarERP/home.php</file>
+            <file>file:/D:/Drive/DaymarERP/css/cssdaymar.css</file>
+            <file>file:/D:/Drive/DaymarERP/js/jscrearfactura.js</file>
+            <file>file:/D:/Drive/DaymarERP/css/bootstrap.min.css</file>
+            <file>file:/D:/Drive/DaymarERP/include/DB.php</file>
         </group>
     </open-files>
 </project-private>

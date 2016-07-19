@@ -18,48 +18,61 @@ session_start();
 if (!isset($_SESSION['usuario']))
     die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 
+//Se declara la variable para generar scripts
+$script = array();
+
 //borrar telefonos
 //boorar cliente
-
-if(isset($_POST['borrar'])){
-    DB::deletedatos('telefonos', 'dni_cliente', $_POST['oculto']);
-    DB::deletedatos('clientes', 'dni', $_POST['oculto']);
+if (isset($_POST['borrar'])) {
+    $facturas = DB::getdatos('facturas', 'dni_cliente', $_POST['oculto']);
+    if (count($facturas) == 0) {
+        DB::deletedatos('telefonos', 'dni_cliente', $_POST['oculto']);
+        DB::deletedatos('clientes', 'dni', $_POST['oculto']);
+    } else {
+        $scriptvalor= 'alert("Hay facturas asociadas a este cliente. No se puede borrar")';
+        $script[] = $scriptvalor;
+    }
 }
 
 $indicee = array();
 $indicee = DB::getindice('clientes');
 $contenidoo = array();
-$script = array();
-$contenidoo = DB::getlista('clientes', $indicee);
+$contenidoo = DB::gettabla('clientes');
 
 $j = 0;
 //Añadir telefonos
 for ($i = 0; $i < count($contenidoo); $i++) {
-    $telefonos = DB::gettelefonos($contenidoo[$i][0]);
+    $telefonos = DB::getdatos('telefonos', 'dni_cliente', $contenidoo[$i][0]);
     $tam = count($telefonos);
     if ($tam == 1) {
         //Si hay un solo telefono mostarlo
-        $contenidoo[$i][] = $telefonos[0];
+        $contenidoo[$i][] = $telefonos[0][0];
     } else {
         //Generar boton
-        $button = "<button id='test" . $j . "' onClick='showAlert" . $j . "()' >Click</button>";
+        $button = "<button id='test" . $j . "' onClick='showAlert" . $j . "()' >Mostrar</button>";
         $contenidoo[$i][] = $button;
         //Concadenar el script para que se cree en la pagina
-        $scriptvalor = "<script>
-                            function showAlert" . $j . "() {
+        $scriptvalor = "function showAlert" . $j . "() {
                             alert('";
         for ($w = 0; $w < $tam; $w++) {
-            $scriptvalor.= "$telefonos[$w] ";
+            $scriptvalor.= $telefonos[$w][0] . ' \n';
         }
-        $scriptvalor.= "');}</script>";
-        $script[]=$scriptvalor;
+        $scriptvalor.= "');}";
+        $script[] = $scriptvalor;
+        /*Mostrar diractamente los telefonos
+         *  $tel="";
+          for ($w = 0; $w < $tam; $w++) {
+          $tel.= $telefonos[$w][0].'<br>';
+          }
+          $contenidoo[$i][]=$tel; */
     }
-    $j++; 
+    $j++;
 }
 
 //Añadir el indice de telefonos a la tabla
-if(count($contenidoo)>0){
-$indicee[] = 'Telefono';
+if (count($contenidoo) > 0) {
+    $indicee[] = 'Telefono';
+    $indicee[] = "Borrar";
 }
 
 // Ponemos a disposición de la plantilla los datos necesarios
@@ -68,10 +81,13 @@ $smarty->assign('tipolistap', 'clientes');
 $smarty->assign('tipolistas', 'cliente');
 $smarty->assign('indicee', $indicee);
 $smarty->assign('contenidoo', $contenidoo);
-$smarty->assign('script', $script);
 $smarty->assign('crearphp', 'crearcliente.php');
 $smarty->assign('paginaactual', 'listaclientes.php');
+$smarty->assign('script', $script);
+$smarty->assign('title', 'Lista clientes');
+$smarty->assign('titlemenu', 'Lista de clientes');
+$smarty->assign('pagina', 'listas.tpl');
 
 // Mostramos la plantilla
-$smarty->display('listas.tpl');
+$smarty->display('cuerpo.tpl');
 ?>

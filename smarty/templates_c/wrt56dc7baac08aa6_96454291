@@ -1,0 +1,108 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-06 19:49:14
+  from "D:\Apuntes\Dropbox\Proyectos\daymar\smarty\templates\crear.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56dc7baac05720_72658908',
+  'file_dependency' => 
+  array (
+    '0eff4ea521a1c0dd688c17a9f948c54c2139bee8' => 
+    array (
+      0 => 'D:\\Apuntes\\Dropbox\\Proyectos\\daymar\\smarty\\templates\\crear.tpl',
+      1 => 1457290138,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_56dc7baac05720_72658908 ($_smarty_tpl) {
+?>
+<!DOCTYPE html>
+<!-- Daymar Edificacion -->
+<!-- Menu Crear -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Crear<?php echo $_smarty_tpl->tpl_vars['tipoelementos']->value;?>
+</title>
+        <link href="cssdaymar.css" rel="stylesheet" type="text/css">
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="encabezado">
+            <h1>Crear <?php echo $_smarty_tpl->tpl_vars['tipoelementos']->value;?>
+</h1>
+            <input type="button" onclick="location.href = 'home.php'" name="home" value="Ir al home">
+            <input type="button" onclick="location.href = '<?php echo $_smarty_tpl->tpl_vars['listaphp']->value;?>
+'" name="crear<?php echo $_smarty_tpl->tpl_vars['tipoelemento']->value;?>
+" value="Lista de <?php echo $_smarty_tpl->tpl_vars['tipoelementos']->value;?>
+">
+            <div id="reloj">
+                <?php echo '<script'; ?>
+ type="text/javascript" src="include/clock24.js"><?php echo '</script'; ?>
+>
+                <span class="clock24s" id="clock24_17367" style="color:#6393C3;">reloj</span>
+                <?php echo '<script'; ?>
+ type="text/javascript">
+                    var clock24_17367 = new clock24('17367', '60', '%HH:%nn:%ss %P', 'es');
+                    clock24_17367.daylight('ES');
+                    clock24_17367.refresh();
+                <?php echo '</script'; ?>
+>
+            </div>
+        </div>
+
+        <div id="contenido">
+            <form action='<?php echo $_smarty_tpl->tpl_vars['phpself']->value;?>
+' method='post'>
+                <?php ob_start();
+echo $_smarty_tpl->tpl_vars['file']->value;
+$_tmp1=ob_get_clean();
+$_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, $_tmp1, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
+?>
+
+                <div class='campo'>
+                    <input type='submit' name='crear' value='Crear' />
+                </div>
+            </form>
+        </div>
+        <?php
+$_from = $_smarty_tpl->tpl_vars['script']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_scriptv_0_saved_item = isset($_smarty_tpl->tpl_vars['scriptv']) ? $_smarty_tpl->tpl_vars['scriptv'] : false;
+$_smarty_tpl->tpl_vars['scriptv'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['scriptv']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['scriptv']->value) {
+$_smarty_tpl->tpl_vars['scriptv']->_loop = true;
+$__foreach_scriptv_0_saved_local_item = $_smarty_tpl->tpl_vars['scriptv'];
+?>
+            <?php echo $_smarty_tpl->tpl_vars['scriptv']->value;?>
+
+        <?php
+$_smarty_tpl->tpl_vars['scriptv'] = $__foreach_scriptv_0_saved_local_item;
+}
+if ($__foreach_scriptv_0_saved_item) {
+$_smarty_tpl->tpl_vars['scriptv'] = $__foreach_scriptv_0_saved_item;
+}
+?>
+        <div id="pie">
+            <span class="texto">Usuario: </span>
+            <span class="texto"><?php echo $_smarty_tpl->tpl_vars['usuario']->value;?>
+</span>
+            <form id="form_logout" action=logout.php method="post">
+                <input type="submit" name="objeto" value="Salir">
+            </form>
+        </div>
+    </body>
+</html>
+<?php }
+}

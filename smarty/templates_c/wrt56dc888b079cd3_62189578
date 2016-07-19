@@ -1,0 +1,103 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-03-06 20:44:11
+  from "D:\Apuntes\Dropbox\Proyectos\daymar\smarty\templates\home.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_56dc888b075ee4_54021020',
+  'file_dependency' => 
+  array (
+    'd9ee0011c75577e339a617ee72551521e9847444' => 
+    array (
+      0 => 'D:\\Apuntes\\Dropbox\\Proyectos\\daymar\\smarty\\templates\\home.tpl',
+      1 => 1457293449,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:barranavegacion.tpl' => 1,
+  ),
+),false)) {
+function content_56dc888b075ee4_54021020 ($_smarty_tpl) {
+?>
+<!DOCTYPE html>
+<!-- Daymar Edificacion -->
+<!-- Menu principal: home.php -->
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+        <title>Home: Daymar Edificación</title>
+        <link href="cssdaymar.css" rel="stylesheet" type="text/css">
+        <style>
+        </style>
+    </head>
+    <body>   
+        <div id="encabezado">
+            <div id="reloj" style="text-align: right;margin-bottom: 200px">
+                <?php echo '<script'; ?>
+ type="text/javascript" src="include/clock24.js"><?php echo '</script'; ?>
+>
+                <span class="clock24s" id="clock24_17367" style="color:#6393C3;">reloj</span>
+                <?php echo '<script'; ?>
+ type="text/javascript">
+                    var clock24_17367 = new clock24('17367', '60', '%HH:%nn:%ss %P', 'es');
+                    clock24_17367.daylight('ES');
+                    clock24_17367.refresh();
+                <?php echo '</script'; ?>
+>
+            </div>
+            <h1>Menu Principal</h1>
+        </div>
+
+                <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:barranavegacion.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+        
+        <div id="contenido">
+            <div id="contenidomenu">
+                <h2>Contabilidad:</h2>
+                <input type="button" onclick="location.href = 'contabilidad.php'" name="modificarcuenta" value="Contabilidad">
+            </div>
+            <div id="contenidomenu">
+                <h2>Facturas:</h2>
+                <input type="button" onclick="location.href = 'listafacturas.php'" name="modificarcuenta" value="Lista de Facturas">
+                <input type="button" onclick="location.href = 'crearfactura.php'" name="modificarcuenta" value="Crear factura">
+            </div>
+            <div id="contenidomenu">
+                <h2>Clientes:</h2>
+                <input type="button" onclick="location.href = 'listaclientes.php'" name="modificarcuenta" value="Lista de clientes">
+                <input type="button" onclick="location.href = 'crearcliente.php'" name="modificarcuenta" value="Crear cliente">
+            </div>
+            <div id="contenidomenu">
+                <h2>Gastos:</h2>
+                <input type="button" onclick="location.href = 'listagastos.php'" name="modificarcuenta" value="Lista de gastos">
+                <input type="button" onclick="location.href = 'creargasto.php'" name="modificarcuenta" value="Crear gasto">
+            </div>
+            <div id="contenidomenu">
+                <h2>Elementos</h2>
+                <input type="button" onclick="location.href = 'listaelementos.php'" name="modificarcuenta" value="Lista de elementos">
+                <input type="button" onclick="location.href = 'crearelemento.php'" name="modificarcuenta" value="Crear elemento">
+            </div>
+        </div>
+
+        <div id="pie">
+            <span class="texto">Usuario: </span>
+            <span class="texto"><?php echo $_smarty_tpl->tpl_vars['usuario']->value;?>
+</span>
+            <form id="form_logout" action=logout.php method="post">
+                <input type="submit" name="objeto" value="Salir">
+            </form>
+        </div>
+        <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"><?php echo '</script'; ?>
+>
+        <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+    </body>
+</html><?php }
+}

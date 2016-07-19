@@ -13,13 +13,19 @@ $smarty->setCacheDir('./smarty/cache/');
 // Recuperamos la información de la sesión
 session_start();
 
+$script = array();
+
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario'])) 
     die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
+$smarty->assign('script', $script);
+$smarty->assign('title', 'Lista ');
+$smarty->assign('titlemenu', 'Lista de ');
+$smarty->assign('pagina', 'listas.tpl');
 
 // Mostramos la plantilla
-$smarty->display('listacliente.tpl');     
+$smarty->display('cuerpo.tpl');     
 ?>

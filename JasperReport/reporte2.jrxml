@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="85265276-5361-4418-bbdb-6b0c98b59f97">
+	<property name="ireport.zoom" value="1.4641000000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="21"/>
+	<queryString>
+		<![CDATA[SELECT
+     facturas.`cod_factura` AS facturas_cod_factura,
+     facturas.`hora` AS facturas_hora,
+     facturas.`descuento` AS facturas_descuento,
+     facturas.`dni_cliente` AS facturas_dni_cliente,
+     facturas.`usuario` AS facturas_usuario,
+     facturas.`tipoiva` AS facturas_tipoiva,
+     facturas.`total` AS facturas_total,
+     registros.`cod_factura` AS registros_cod_factura,
+     registros.`cod_elemento` AS registros_cod_elemento,
+     registros.`lineafactura` AS registros_lineafactura,
+     registros.`cantidad` AS registros_cantidad,
+     registros.`precio_puntual` AS registros_precio_puntual,
+     registros.`coste_puntual` AS registros_coste_puntual,
+     elementos.`cod_elemento` AS elementos_cod_elemento,
+     elementos.`nombre` AS elementos_nombre,
+     elementos.`precio` AS elementos_precio,
+     elementos.`coste` AS elementos_coste,
+     clientes.`dni` AS clientes_dni,
+     clientes.`nombre` AS clientes_nombre,
+     clientes.`apellido1` AS clientes_apellido1,
+     clientes.`apellido2` AS clientes_apellido2,
+     clientes.`direccion` AS clientes_direccion,
+     clientes.`localidad` AS clientes_localidad,
+     clientes.`provincia` AS clientes_provincia
+FROM
+     `facturas` facturas INNER JOIN `registros` registros ON facturas.`cod_factura` = registros.`cod_factura`
+     INNER JOIN `elementos` elementos ON registros.`cod_elemento` = elementos.`cod_elemento`
+     INNER JOIN `clientes` clientes ON facturas.`dni_cliente` = clientes.`dni`]]>
+	</queryString>
+	<field name="facturas_cod_factura" class="java.lang.String"/>
+	<field name="facturas_hora" class="java.sql.Timestamp"/>
+	<field name="facturas_descuento" class="java.lang.Integer"/>
+	<field name="facturas_dni_cliente" class="java.lang.String"/>
+	<field name="facturas_usuario" class="java.lang.String"/>
+	<field name="facturas_tipoiva" class="java.lang.Integer"/>
+	<field name="facturas_total" class="java.lang.Double"/>
+	<field name="registros_cod_factura" class="java.lang.String"/>
+	<field name="registros_cod_elemento" class="java.lang.String"/>
+	<field name="registros_lineafactura" class="java.lang.Integer"/>
+	<field name="registros_cantidad" class="java.lang.Integer"/>
+	<field name="registros_precio_puntual" class="java.lang.Double"/>
+	<field name="registros_coste_puntual" class="java.lang.Double"/>
+	<field name="elementos_cod_elemento" class="java.lang.String"/>
+	<field name="elementos_nombre" class="java.lang.String"/>
+	<field name="elementos_precio" class="java.lang.Double"/>
+	<field name="elementos_coste" class="java.lang.Double"/>
+	<field name="clientes_dni" class="java.lang.String"/>
+	<field name="clientes_nombre" class="java.lang.String"/>
+	<field name="clientes_apellido1" class="java.lang.String"/>
+	<field name="clientes_apellido2" class="java.lang.String"/>
+	<field name="clientes_direccion" class="java.lang.String"/>
+	<field name="clientes_localidad" class="java.lang.String"/>
+	<field name="clientes_provincia" class="java.lang.String"/>
+	<group name="facturas_cod_factura">
+		<groupExpression><![CDATA[$F{facturas_cod_factura}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="232" splitType="Stretch">
+			<rectangle>
+				<reportElement x="322" y="26" width="221" height="88" uuid="35d73430-8d0e-4fe7-b167-a7791596d167"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="322" y="142" width="221" height="80" uuid="b5a01508-1df3-48f2-8549-9ff8c060fd0a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="57" y="142" width="190" height="77" uuid="50a956e2-aea2-4307-a4ae-284502071a84"/>
+			</rectangle>
+			<textField>
+				<reportElement x="337" y="182" width="206" height="20" uuid="aa37e0ca-9f56-4e23-b0f5-efc96868c744"/>
+				<textFieldExpression><![CDATA[$F{clientes_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="199" width="100" height="20" uuid="c93d6d7f-f4cf-4d9c-8014-e2476c5b14c8"/>
+				<textFieldExpression><![CDATA[$F{clientes_provincia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="322" y="48" width="205" height="53" uuid="8e221f3f-3f57-4b95-b16a-f8bedf13ffb8"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DNI 99999999-D
+C/ Piruleta
+04720 Aguadulce (Almería)
+Teléfono: 666 69 69 69]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="162" width="100" height="20" uuid="de097fc0-30a4-455c-961d-d208195ff3d3"/>
+				<textFieldExpression><![CDATA[$F{clientes_apellido2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="322" y="26" width="205" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="90b4ce22-8d96-4e98-94fe-73944e43a4a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturas_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="142" width="100" height="20" uuid="1db43889-2ae5-4bf8-9451-4aa5f32a67ac"/>
+				<textFieldExpression><![CDATA[$F{clientes_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="202" width="100" height="20" uuid="85b19697-7591-4dec-959d-800a0977b8f3"/>
+				<textFieldExpression><![CDATA[$F{clientes_localidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="162" width="100" height="20" uuid="8b5ce206-03cd-40c7-806e-3689971da396"/>
+				<textFieldExpression><![CDATA[$F{clientes_apellido1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="142" width="100" height="20" uuid="0d150cb4-bcfa-451a-b2a0-380e2dbf7776"/>
+				<textFieldExpression><![CDATA[$F{clientes_dni}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="57" y="142" width="190" height="77" uuid="d56c9de4-2b1e-4b8c-8041-592d967133dd"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[www.daymaredificacion.es
+666 69 69 69
+daymar@gmail
+.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="12" y="11" width="300" height="115" uuid="680bf226-4092-4a0a-bffb-c7af744806c1"/>
+				<imageExpression><![CDATA["D:\\Apuntes\\Drive\\DAM\\DI\\Proyectos\\JRdaymar\\src\\jasperreportsdbempleados\\logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<rectangle>
+				<reportElement x="12" y="12" width="531" height="20" uuid="891cd00d-4b99-4162-b2d9-c5f236b4b1e9"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="12" y="12" width="99" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ab754912-4e45-4850-b6a3-e695ddcff4d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Cod. Elemento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="111" y="12" width="171" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="690a2a4e-cd3f-4e79-8ef0-689f49778f4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="282" y="12" width="70" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="60645539-7f78-49c1-a444-4babf6bcdbbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Precio uni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="352" y="12" width="49" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9b250564-aba5-40ce-9069-360065a2a03a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Coste]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="401" y="12" width="65" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="222b9de2-b8cb-4f04-a8ef-ad6278ba82cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="466" y="12" width="77" height="20" uuid="4b181052-e0fd-435e-97f2-2bac439877ee"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="99" height="20" uuid="551a28f6-e7b7-4963-bc61-e399dffbf93a"/>
+				<textFieldExpression><![CDATA[$F{elementos_cod_elemento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="171" height="20" uuid="8a9be051-110e-4609-a4e0-6552fbb40a11"/>
+				<textFieldExpression><![CDATA[$F{elementos_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="0" width="70" height="20" uuid="b0c041a6-353d-46f9-aa56-8a8fa9ca39d5"/>
+				<textFieldExpression><![CDATA[$F{registros_precio_puntual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="49" height="20" uuid="901f4a28-052c-4046-b0e2-72a139ba5746"/>
+				<textFieldExpression><![CDATA[$F{registros_coste_puntual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="0" width="65" height="20" uuid="62e934e3-f08d-45dc-b627-f6750fa438de"/>
+				<textFieldExpression><![CDATA[$F{registros_cantidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="34" width="27" height="20" uuid="73fbc950-83ee-406f-b1a7-591c6fc1f5ef"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="58" y="34" width="189" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="986c83c6-c377-4fd6-896f-eb50c16f89d6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturas_hora}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="365" y="32" width="36" height="20" uuid="f5bf3255-92fb-4a43-aefe-d507ce9a8857"/>
+				<textFieldExpression><![CDATA[$F{facturas_tipoiva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="32" width="100" height="20" uuid="5c6ff222-f2ca-4013-ba8f-4ff94823a4b1"/>
+				<textFieldExpression><![CDATA[$F{facturas_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="443" y="12" width="100" height="20" uuid="97af5174-301e-4ee0-88ca-9c79cd48624a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Precio TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="12" width="100" height="20" uuid="4774a406-ae9f-4797-be35-b44c4b24a9c4"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tipo IVA]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

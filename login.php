@@ -17,7 +17,7 @@ if (isset($_POST['enviar'])) {
         $smarty->assign('error','Debes introducir un nombre de usuario y una contraseña');
     else {
         // Comprobamos las credenciales con la base de datos
-        if (DB::verificaCliente($_POST['usuario'], $_POST['password'])) {
+        if (DB::verificaUsuario($_POST['usuario'], $_POST['password'])) {
             session_start();
             $_SESSION['usuario']=$_POST['usuario'];
             header("Location: home.php");                    

@@ -17,8 +17,7 @@ session_start();
 //Script para calcular precios
 $script = array();
 
-$script[] = "<script lang=\"javascript\">
-            function calculariva(){
+$script[] = "function calculariva(){
         console.log(\"calculariva\");
             var iva;
             var precio;
@@ -73,8 +72,7 @@ $script[] = "<script lang=\"javascript\">
             poriva=document.getElementById(\"poriva\");
             poriva.addEventListener(\"click\",  calcularprecio);
         }
-        window.addEventListener(\"load\", inicio);
-        </script>";
+        window.addEventListener(\"load\", inicio);";
 
 // Y comprobamos que el usuario se haya autentificado
 if (!isset($_SESSION['usuario'])) {
@@ -95,6 +93,19 @@ if (isset($_POST['crear'])) {
         $columnas = array('cod_gasto', 'nombre', 'descripcion', 'fecha', 'precio', 'iva', 'precio_iva', 'usuario');
         $datos = array($_POST['cod'], $_POST['nombre'], $_POST['descripcion'], $_POST['fecha'], $_POST['precio'], $_POST['iva'], $_POST['precioiva'], $_SESSION['usuario']);
         DB::adddato('gastos', $columnas, $datos);
+    } else {
+        $scriptvalor = 'alert("Los siguientes campos son obligatorios:';
+        if (!(isset($_POST['cod']))) {
+            $scriptvalor.='\nCodigo de gasto';
+        }
+        if (!(isset($_POST['nombre']))) {
+            $scriptvalor.='\nNombre del gasto';
+        }
+        if ($_POST['precio'] == 0) {
+            $scriptvalor.='\nEl gasto tiene que tener un valor';
+        }
+        $scriptvalor.='")';
+        $script[] = $scriptvalor;
     }
 }
 
@@ -102,14 +113,17 @@ if (isset($_POST['crear'])) {
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('phpself', $_SERVER['PHP_SELF']);
-$smarty->assign('file', "creargasto.tpl");
 $smarty->assign('tipoelementos', "gastos");
 $smarty->assign('tipoelemento', "gasto");
 $smarty->assign('listaphp', "listagastos.php");
-$smarty->assign('script', $script);
 $smarty->assign('codigo', $codigo);
 $smarty->assign('date', date("Y-m-d"));
+$smarty->assign('script', $script);
+$smarty->assign('title', 'Crear gastos');
+$smarty->assign('titlemenu', 'Crear gastos');
+$smarty->assign('file', "creargasto.tpl");
+$smarty->assign('pagina', 'crear.tpl');
 
 // Mostramos la plantilla
-$smarty->display('crear.tpl');
+$smarty->display('cuerpo.tpl');
 ?>

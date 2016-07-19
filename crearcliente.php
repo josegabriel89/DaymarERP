@@ -14,9 +14,22 @@ $smarty->setCacheDir('./smarty/cache/');
 // Recuperamos la información de la sesión
 session_start();
 
+// Y comprobamos que el usuario se haya autentificado
+if (!isset($_SESSION['usuario']))
+    die("Error - debe <a href='login.php'>identificarse</a>.<br />");
 
+
+//Se declara la variable para generar scripts
 $script = array();
 
+//Declaracion de variables
+$valordni = "";
+$valornombre = "";
+$valorapellido1 = "";
+$valorapellido2 = "";
+$valordireccion = "";
+$valorlocalidad = "";
+$valorprovincia = "";
 // Numero de telefonos en la sesion
 if (!isset($_SESSION['numerotelefonos'])){
 $_SESSION['numerotelefonos']=1;
@@ -26,6 +39,12 @@ $_SESSION['numerotelefonos']=1;
 if(isset($_POST['mas']))$_SESSION['numerotelefonos']++;
 if(isset($_POST['menos']))$_SESSION['numerotelefonos']--;
 
+
+$valortelefonoarray=array();
+
+for ($index = 0; $index < $_SESSION['numerotelefonos']; $index++) {
+            $valortelefonoarray[]="";
+}
 
 
 //if ($telefonos > 0) {
@@ -55,19 +74,43 @@ if (isset($_POST['crear'])) {
             $tel= "telefono".$n;
         }
         DB::adddatos('telefonos', $columnastelefono, $datostelefono);
+    }else{
+        $scriptvalor='alert("Los siguientes campos son obligatorios:';
+        if (!(isset($_POST['dni']) && $_POST['dni']!="")) {
+            $scriptvalor.='\nDNI';
+        }
+        if (!(isset($_POST['nombre']) && $_POST['nombre']!="")) {
+            $scriptvalor.='\nNombre';
+        }
+        if (!(isset($_POST['telefono1']) && $_POST['telefono1']!="")) {
+            $scriptvalor.='\nTelefono';
+        }
+         $scriptvalor.='")';
+        $script[]=$scriptvalor;
     }
 }
 
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('phpself', $_SERVER['PHP_SELF']);
-$smarty->assign('file', "crearcliente.tpl");
 $smarty->assign('tipoelementos', "clientes");
 $smarty->assign('tipoelemento', "cliente");
 $smarty->assign('listaphp', "listaclientes.php");
 $smarty->assign('num', $_SESSION['numerotelefonos']);
 $smarty->assign('script', $script);
+$smarty->assign('title', 'Crear clientes');
+$smarty->assign('titlemenu', 'Crear clientes');
+$smarty->assign('file', "crearcliente.tpl");
+$smarty->assign('pagina', 'crear.tpl');
+$smarty->assign('valordni', $valordni);
+$smarty->assign('valornombre', $valornombre);
+$smarty->assign('valorapellido1', $valorapellido1);
+$smarty->assign('valorapellido2', $valorapellido2);
+$smarty->assign('valordireccion', $valordireccion);
+$smarty->assign('valorlocalidad', $valorlocalidad);
+$smarty->assign('valorprovincia', $valorprovincia);
+$smarty->assign('valortelefonoarray', $valortelefonoarray);
 
 // Mostramos la plantilla
-$smarty->display('crear.tpl');
+$smarty->display('cuerpo.tpl');
 ?>

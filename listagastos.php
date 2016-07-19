@@ -21,26 +21,31 @@ if (!isset($_SESSION['usuario']))
 if(isset($_POST['borrar'])){
     DB::deletedatos('gastos', 'cod_gasto', $_POST['oculto']);
 }
-//meterle una comprobacion
+//poner una comprobacion
 
 
 $indicee =array();
 $indicee= DB::getindice('gastos');
-$indicee[]="Borrar";
 $contenidoo =array();
-$contenidoo= DB::getlista('gastos', $indicee);
+$contenidoo= DB::gettabla('gastos');
 $script= array();
 
+if (count($contenidoo) > 0) {
+$indicee[]="Borrar";
+}
 // Ponemos a disposición de la plantilla los datos necesarios
 $smarty->assign('usuario', $_SESSION['usuario']);
 $smarty->assign('tipolistap', 'gastos');
 $smarty->assign('tipolistas', 'gasto');
 $smarty->assign('indicee', $indicee);
 $smarty->assign('contenidoo', $contenidoo);
-$smarty->assign('script', $script);
 $smarty->assign('crearphp', 'creargasto.php');
+$smarty->assign('script', $script);
 $smarty->assign('paginaactual', 'listagastos.php');
+$smarty->assign('title', 'Lista gastos');
+$smarty->assign('titlemenu', 'Lista de gastos');
+$smarty->assign('pagina', 'listas.tpl');
 
 // Mostramos la plantilla
-$smarty->display('listas.tpl');     
+$smarty->display('cuerpo.tpl');     
 ?>

@@ -1,0 +1,126 @@
+<?php
+/* Smarty version 3.1.29, created on 2016-06-20 01:38:48
+  from "D:\Apuntes\Drive\DaymarERP\js\jscrearfactura.js" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_57672d087eda41_14969205',
+  'file_dependency' => 
+  array (
+    '0364028d422fd167a5861bf5f7792326c2630744' => 
+    array (
+      0 => 'D:\\Apuntes\\Drive\\DaymarERP\\js\\jscrearfactura.js',
+      1 => 1466379527,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_57672d087eda41_14969205 ($_smarty_tpl) {
+?>
+document.getElementById('fechafactura').valueAsDate = new Date();
+document.getElementById('fechafactura').innerHTML = new Date()+1;
+
+//Mostrar div ocultos
+var listadiv = ["facturatablaclientes", "facturatablaelementos"];
+
+function mostrarlistaclientes() {
+    mostrarcontenido("facturatablaclientes");
+}
+
+function mostrarlistaelementos() {
+    mostrarcontenido("facturatablaelementos");
+}
+
+function mostrarcontenido(divseleccionado) {
+    if (document.getElementById(divseleccionado).style.display != "none") {
+        document.getElementById(divseleccionado).style.display = "none";
+    } else {
+        for (var i = 0; i < listadiv.length; i++) {
+            document.getElementById(listadiv[i]).style.display = "none";
+        }
+        ;
+        document.getElementById(divseleccionado).style.display = "inline";
+    }
+}
+
+//controlar tabla de elementos
+var arrayelementosañadidos = new Array();
+actualizartabla();
+
+function addelemento(codigo) {
+    for (var i = 0; i < arrayelementos.length; i++) {
+        if (codigo = arrayelementos[i][1]) {
+            arrayelementosañadidos.push(arrayelementos[i]);
+            addlinea(arrayelementos[i]);
+        }
+    }
+}
+
+function addlinea(elemento) {
+    var tabla = document.getElementById("tablaelementos");
+    var tr = document.createElement("tr");
+    var tdcod = document.createElement("td");
+    var tdnombre = document.createElement("td");
+    var tdprecio = document.createElement("td");
+    var tdcoste = document.createElement("td");
+    var tdcantidad = document.createElement("td");
+    var tdborrar = document.createElement("td");
+    tdcod.appendChild(document.createTextNode(elemento[0]));
+    tdnombre.appendChild(document.createTextNode(elemento[1]));
+    tdprecio.appendChild(document.createTextNode(elemento[2]));
+    tdcoste.appendChild(document.createTextNode(elemento[3]));
+    var inputcantidad = document.createElement("input");
+    inputcantidad.type = "number";
+    inputcantidad.name = "descuento";
+    inputcantidad.className ="form-control"
+    inputcantidad.step = "any";
+    inputcantidad.value = "0";
+    inputcantidad.style = "width: 70px;";
+    inputcantidad.addEventListener("change", actualizarresultadotabla);
+    tdcantidad.appendChild(inputcantidad);
+    var inputborrar = document.createElement("a");
+    inputborrar.type = "button";
+    inputborrar.className ="btn btn-default"
+    inputborrar.addEventListener("click", borrarvalor(elemento[0]));
+    inputborrar.appendChild(document.createTextNode('X'));
+    tdborrar.appendChild(inputborrar);
+    tr.appendChild(tdcod);
+    tr.appendChild(tdnombre);
+    tr.appendChild(tdprecio);
+    tr.appendChild(tdcoste);
+    tr.appendChild(tdcantidad);
+    tr.appendChild(tdborrar);
+    tabla.appendChild(tr);
+jQuery(window).trigger('resize');
+    actualizarresultadotabla();
+}
+
+function borrarvalor(campo){
+    
+}
+
+//cambia el valor del input oculto en una cadena con el codigo de los elementos elegidos y su cantidad, cada valor va separado por un ;
+function actualizarresultadotabla() {
+    var texto = "";
+    var tabla = document.getElementById("tablaelementos");
+    for (var i = 0; i < tabla.children.length; i++) {
+        texto = texto + tabla.children[i].children[0].childNodes[0].nodeValue + ";" + tabla.children[i].children[4].childNodes[0].value + ";";
+    }
+    document.getElementById("contenidotabla").value = texto;
+}
+
+function actualizartabla() {
+    var tabla = document.getElementById("tablaelementos");
+    while (tabla.children.length != 0) {
+        tabla.removeChild(tabla.firstChild);
+    }
+    for (var i = 0; i < arrayelementosañadidos.length; i++) {
+        addlinea(arrayelementosañadidos[i]);
+    }
+}
+<?php }
+}
